@@ -3,8 +3,14 @@ kind: Deployment
 metadata:
   name: {{ .Values.executor.name }}
 spec:
-  replicas: 1
+  replicas: {{ .Values.executor.replicas }}
+  selector:
+    matchLabels:
+      app: {{ .Values.executor.name }}
   template:
+    metadata:
+      labels:
+        app: {{ .Values.executor.name }}
     spec:
       containers:
         - name: {{ .Values.executor.name }}
