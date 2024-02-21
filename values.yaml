@@ -2,7 +2,7 @@ executor:
   name: trino
   replicas: 1
   image:
-    repository: trino-query-executor
+    repository: ghcr.io/steadforce/apps/trino-query-executor
     tag: main
     pullPolicy: Always
   resources:
