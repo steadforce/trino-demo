@@ -1,0 +1,20 @@
+executor:
+  name: trino
+  replicas: 1
+  image:
+    repository: trino-query-executor
+    tag: main
+    pullPolicy: Always
+  resources:
+    limits: 
+      cpu: 250m
+      memory: 256Mi
+    requests:
+      cpu: 125m
+      memory: 128Mi
+  env:
+    TRINO_HOST: http://trino.trino.svc.cluster.local:8080
+    CATALOG: kafka
+    SCHEMA: steadforce
+    QUERY_INTERVAL_IN_S: 5
+    QUERY: "select * from tools limit 10;"

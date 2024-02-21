@@ -1,0 +1,17 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.executor.name }}
+spec:
+  replicas: 1
+  template:
+    spec:
+      containers:
+        - name: {{ .Values.executor.name }}
+          image: "{{ .Values.executor.image.repository }}:{{ .Values.executor.image.tag }}"
+          imagePullPolicy: {{ .Values.executor.image.pullPolicy }}
+          env:            
+          {{- range $key, $val := .Values.executor.env }}
+          - name: {{ $key }}
+            value: {{ $val | quote }}
+          {{- end }}
