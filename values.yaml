@@ -3,7 +3,7 @@ executor:
   replicas: 1
   image:
     repository: ghcr.io/steadforce/apps/trino-query-executor
-    tag: main
+    tag: initial-version
     pullPolicy: Always
   resources:
     limits: 
